@@ -1,5 +1,5 @@
 # Be sure to restart your server when you modify this file.
-ASSET_VERSION = '0.0.1'
+ASSET_VERSION = '0.0.1'.freeze
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = ASSET_VERSION
 
