@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_10_05_223221) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "question_id"
+    t.string "title", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 

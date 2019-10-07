@@ -2,6 +2,8 @@
 
 one:
   correct: MyString
+  title: Str
 
 two:
   correct: MyString
+  title: Sty
