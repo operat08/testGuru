@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_223221) do
+ActiveRecord::Schema.define(version: 2019_10_07_184324) do
 
   create_table "answers", force: :cascade do |t|
     t.string "correct", default: "f"
@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 2019_10_05_223221) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "question_id"
+    t.integer "test_id"
     t.index ["question_id"], name: "index_categories_on_question_id"
+    t.index ["test_id"], name: "index_categories_on_test_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -40,20 +42,27 @@ ActiveRecord::Schema.define(version: 2019_10_05_223221) do
     t.integer "level", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_tests_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users_tests", force: :cascade do |t|
+    t.string "result", default: "f"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "test_id"
-    t.index ["test_id"], name: "index_users_on_test_id"
+    t.integer "user_id"
+    t.index ["test_id"], name: "index_users_tests_on_test_id"
+    t.index ["user_id"], name: "index_users_tests_on_user_id"
   end
 
   add_foreign_key "answers", "questions"
   add_foreign_key "categories", "questions"
-  add_foreign_key "tests", "categories"
-  add_foreign_key "users", "tests"
+  add_foreign_key "categories", "tests"
+  add_foreign_key "users_tests", "tests"
+  add_foreign_key "users_tests", "users"
 end

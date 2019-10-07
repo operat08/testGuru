@@ -1,9 +1,5 @@
 class User < ApplicationRecord
   def test_list_on_level(level)
-    users = User.where('name == ?', name)
-    users.inject([]) do |acc, elem|
-      test = Test.find(elem.test_id)
-      test.level == level ? [*acc, test] : acc
-    end
+    Test.joins('JOIN users_tests ON tests.id = users_tests.test_id').where("level == ? AND user_id == ?", level, id)
   end
 end

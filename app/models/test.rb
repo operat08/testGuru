@@ -1,9 +1,7 @@
 class Test < ApplicationRecord
   def self.sort_by_category(category)
-    tests = Test.all.order(title: :desc)
-    tests.inject([]) do |acc, elem|
-      current_category = Category.find(elem.category_id)
-      current_category.title == category ? [*acc, elem.title] : acc
-    end
+    Test.select(:title).joins('JOIN categories ON tests.id = categories.test_id')\
+      .where("categories.title == ?", category)\
+      .order('categories.title desc')
   end
 end
