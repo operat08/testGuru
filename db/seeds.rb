@@ -5,17 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+users = User.create!([{ name: 'Vasiliy' }, { name: 'Fedor' }, { name: 'Jack' }])
+
 categories = Category.create!([{ title: 'About me' },
   { title: 'About weather' },
   { title: 'About JavaScript' }
 ])
 
-tests = Test.create!([{ title: 'Vasiliy', category_id: categories[0].id },
-  { title: 'Weather', category_id: categories[1].id },
-  { title: 'JavaScript', category_id: categories[2].id }
+tests = Test.create!([{ title: 'Vasiliy', category_id: categories[0].id, user_id: users[0].id },
+  { title: 'Weather', category_id: categories[1].id, user_id: users[1].id },
+  { title: 'JavaScript', category_id: categories[2].id, user_id: users[2].id }
 ])
-
-users = User.create!([{ name: 'Vasiliy' }, { name: 'Fedor' }, { name: 'Jack' }])
 
 questions = Question.create!([{ title: 'How do I do?', test_id: tests[0].id },
   { title: 'What is my name?', test_id: tests[0].id }, { title: 'Is the weather fine?', test_id: tests[1].id },
