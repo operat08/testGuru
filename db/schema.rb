@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2019_10_07_184243) do
 
   create_table "users_tests", force: :cascade do |t|
     t.string "result", default: "f"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "test_id"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_users_tests_on_test_id"
     t.index ["user_id"], name: "index_users_tests_on_user_id"
   end
