@@ -12,24 +12,25 @@ categories = Category.create!([{ title: 'About me' },
   { title: 'About JavaScript' }
 ])
 
-tests = Test.create!([{ title: 'Vasiliy', category_id: categories[0].id, user_id: users[0].id },
-  { title: 'Weather', category_id: categories[1].id, user_id: users[1].id },
-  { title: 'JavaScript', category_id: categories[2].id, user_id: users[2].id }
+tests = Test.create!([{ title: 'Vasiliy', category: categories[0], author_id: users[0].id },
+  { title: 'Weather', category: categories[1], author_id: users[2].id },
+  { title: 'JavaScript', category: categories[2], author_id: users[1].id },
+  { title: 'Sun', category: categories[0], author_id: users[0].id }
 ])
 
-questions = Question.create!([{ title: 'How do I do?', test_id: tests[0].id },
-  { title: 'What is my name?', test_id: tests[0].id }, { title: 'Is the weather fine?', test_id: tests[1].id },
-  { title: 'Do I like rain?', test_id: tests[1].id  }, { title: '^ is ?', test_id: tests[2].id }
+questions = Question.create!([{ title: 'How do I do?', test: tests[0] },
+  { title: 'What is my name?', test: tests[0] }, { title: 'Is the weather fine?', test: tests[1] },
+  { title: 'Do I like rain?', test: tests[1] }, { title: '^ is ?', test: tests[2] }
 ])
 
-answers = Answer.create!([{ title: 'not fine', question_id: questions[0].id }, {title: 'fine', question_id: questions[0].id, correct: 't'}, 
-  { title: 'Fedor', question_id: questions[1].id}, { title: 'Vasiliy', correct: 't', question_id: questions[1].id}, 
-  { title: 'The weather is fine', correct: 't', question_id: questions[2].id}, {title: 'The weather not fine', question_id: questions[2].id}, 
-  { title: 'I like rain', correct: 't', question_id: questions[3].id}, {title: 'I do not like rain', question_id: questions[3].id}, 
-  { title: 'OR', question_id: questions[4].id}, {title: 'XOR', correct: 't', question_id: questions[4].id}
+answers = Answer.create!([{ title: 'not fine', question: questions[0] }, { title: 'fine', question: questions[0], correct: 't'}, 
+  { title: 'Fedor', question: questions[1] }, { title: 'Vasiliy', correct: 't', question: questions[1] }, 
+  { title: 'The weather is fine', correct: 't', question: questions[2] }, { title: 'The weather not fine', question: questions[2] }, 
+  { title: 'I like rain', correct: 't', question: questions[3] }, {title: 'I do not like rain', question: questions[3] }, 
+  { title: 'OR', question: questions[4] }, {title: 'XOR', correct: 't', question: questions[4] }
 ])
 
-users_tests = UsersTest.create!([{ test_id: tests[0].id, user_id: users[0].id, result: 't' },
-  { test_id: tests[2].id, user_id: users[0].id }, { test_id: tests[1].id, user_id: users[1].id },
-  { test_id: tests[1].id, user_id: users[1].id }, { test_id: tests[2].id, user_id: users[2].id }
+users_tests = UsersTest.create!([{ test: tests[0], user: users[0], result: 't' },
+  { test: tests[2], user: users[0] }, { test: tests[1], user: users[1] },
+  { test: tests[1], user: users[1] }, { test: tests[2], user: users[2] }
 ])
