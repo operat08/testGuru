@@ -41,8 +41,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_184243) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
-    t.integer "author_id"
-    t.index ["author_id"], name: "index_tests_on_author_id"
+    t.integer "author"
     t.index ["category_id"], name: "index_tests_on_category_id"
   end
 
@@ -65,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_184243) do
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "tests"
   add_foreign_key "tests", "categories"
-  add_foreign_key "tests", "users", column: "author_id"
+  add_foreign_key "tests", "users", column: "author"
   add_foreign_key "users_tests", "tests"
   add_foreign_key "users_tests", "users"
 end

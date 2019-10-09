@@ -12,10 +12,10 @@ categories = Category.create!([{ title: 'About me' },
   { title: 'About JavaScript' }
 ])
 
-tests = Test.create!([{ title: 'Vasiliy', category: categories[0], author_id: users[0].id },
-  { title: 'Weather', category: categories[1], author_id: users[2].id },
-  { title: 'JavaScript', category: categories[2], author_id: users[1].id },
-  { title: 'Sun', category: categories[0], author_id: users[0].id }
+tests = Test.create!([{ title: 'Vasiliy', category: categories[0], author: users[0].id },
+  { title: 'Weather', category: categories[1], author: users[2].id },
+  { title: 'JavaScript', category: categories[2], author: users[1].id },
+  { title: 'Sun', category: categories[0], author: users[0].id }
 ])
 
 questions = Question.create!([{ title: 'How do I do?', test: tests[0] },
