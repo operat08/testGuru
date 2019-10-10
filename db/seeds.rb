@@ -12,10 +12,10 @@ categories = Category.create!([{ title: 'About me' },
   { title: 'About JavaScript' }
 ])
 
-tests = Test.create!([{ title: 'Vasiliy', category: categories[0], author: users[0].id },
-  { title: 'Weather', category: categories[1], author: users[2].id },
-  { title: 'JavaScript', category: categories[2], author: users[1].id },
-  { title: 'Sun', category: categories[0], author: users[0].id }
+tests = Test.create!([{ title: 'Vasiliy', category: categories[0], author: users[0] },
+  { title: 'Weather', category: categories[1], author: users[2] },
+  { title: 'JavaScript', category: categories[2], author: users[1] },
+  { title: 'Sun', category: categories[0], author: users[0] }
 ])
 
 questions = Question.create!([{ title: 'How do I do?', test: tests[0] },
@@ -27,7 +27,7 @@ answers = Answer.create!([{ title: 'not fine', question: questions[0] }, { title
   { title: 'Fedor', question: questions[1] }, { title: 'Vasiliy', correct: 't', question: questions[1] }, 
   { title: 'The weather is fine', correct: 't', question: questions[2] }, { title: 'The weather not fine', question: questions[2] }, 
   { title: 'I like rain', correct: 't', question: questions[3] }, {title: 'I do not like rain', question: questions[3] }, 
-  { title: 'OR', question: questions[4] }, {title: 'XOR', correct: 't', question: questions[4] }
+  { title: 'OR', question: questions[4] }, { title: 'XOR', correct: 't', question: questions[4] }
 ])
 
 users_tests = UsersTest.create!([{ test: tests[0], user: users[0], result: 't' },
