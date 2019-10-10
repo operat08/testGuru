@@ -6,17 +6,15 @@ class Test < ApplicationRecord
   has_many :users, through: :users_tests
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validate :uniq_title_level, on: :create
   validates :title, presence: true
+  validates :title, uniqueness: { case_sensitive: false, scope: :level }
 
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
-  scope :hard, -> { where(level: 1..Float::INFINITY) }
-  scope :sort_by_category, ->(name) { joins(:category).where(categories: { title: name }).order('categories.title desc').pluck(:title) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
+  scope :sort_by_category, ->(name) { joins(:category).where(categories: { title: name }).order('categories.title desc') }
 
-  def uniq_title_level
-    if Test.find_by_title(title)
-      errors.add(:title, :level) if Test.find_by_title(title).level == level
-    end
+  def self.by_category(name)
+    sort_by_category(name).pluck(:title)
   end
 end

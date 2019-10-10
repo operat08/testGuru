@@ -23,11 +23,12 @@ questions = Question.create!([{ title: 'How do I do?', test: tests[0] },
   { title: 'Do I like rain?', test: tests[1] }, { title: '^ is ?', test: tests[2] }
 ])
 
-answers = Answer.create!([{ title: 'not fine', question: questions[0] }, { title: 'fine', question: questions[0], correct: 't'}, 
-  { title: 'Fedor', question: questions[1] }, { title: 'Vasiliy', correct: 't', question: questions[1] }, 
-  { title: 'The weather is fine', correct: 't', question: questions[2] }, { title: 'The weather not fine', question: questions[2] }, 
-  { title: 'I like rain', correct: 't', question: questions[3] }, {title: 'I do not like rain', question: questions[3] }, 
-  { title: 'OR', question: questions[4] }, { title: 'XOR', correct: 't', question: questions[4] }
+answers = Answer.create!([{ title: 'not fine', question: questions[0] }, { title: 'fine', question: questions[0], correct: true }, 
+  { title: 'medium', question: questions[0] }, { title: 'idk', question: questions[0] },
+  { title: 'Fedor', question: questions[1] }, { title: 'Vasiliy', correct: true, question: questions[1] }, 
+  { title: 'The weather is fine', correct: true, question: questions[2] }, { title: 'The weather not fine', question: questions[2] }, 
+  { title: 'I like rain', correct: true, question: questions[3] }, {title: 'I do not like rain', question: questions[3] }, 
+  { title: 'OR', question: questions[4] }, { title: 'XOR', correct: true, question: questions[4] }
 ])
 
 users_tests = UsersTest.create!([{ test: tests[0], user: users[0], result: 't' },
