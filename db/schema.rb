@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_184243) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "users_tests", force: :cascade do |t|

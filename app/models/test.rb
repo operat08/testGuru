@@ -5,10 +5,18 @@ class Test < ApplicationRecord
   has_many :users_tests, dependent: :destroy
   has_many :users, through: :users_tests
 
-  def self.sort_by_category(name)
-    joins(:category)
-      .where(categories: { title: name })
-      .order('categories.title desc')
-      .pluck(:title)
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validate :uniq_title_level, on: :create
+  validates :title, presence: true
+
+  scope :easy, -> { where(level: 0..1) }
+  scope :medium, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 1..Float::INFINITY) }
+  scope :sort_by_category, ->(name) { joins(:category).where(categories: { title: name }).order('categories.title desc').pluck(:title) }
+
+  def uniq_title_level
+    if Test.find_by_title(title)
+      errors.add(:title, :level) if Test.find_by_title(title).level == level
+    end
   end
 end
