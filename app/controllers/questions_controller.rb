@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :find_test
 
-  rescue_from NoMethodError, with: :rescue_with_question_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :rescue_with_question_created
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
     questions = @test.questions.pluck(:title)
@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
 
   def show
     question_id = params['id']
-    question = @test.questions.find_by_id(question_id)
+    question = @test.questions.find(question_id)
 
     render plain: question.title
   end
