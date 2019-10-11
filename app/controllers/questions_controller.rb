@@ -6,12 +6,12 @@ class QuestionsController < ApplicationController
 
   def index
     questions = @test.questions.pluck(:title)
-    render plain: questions.join("\n")
+    render html: "<p>#{questions.join("<br>")}</p>".html_safe
   end
 
   def create
     question = @test.questions.create!(params.require(:question).permit(:title))
-    render plain: "Question #{question.title} has been created"
+    render html: "Question #{question.title} has been created"
   end
 
   def new; end
@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     question_id = params['id']
     question = @test.questions.find(question_id)
 
-    render plain: question.title
+    render html: question.title
   end
 
   def destroy
