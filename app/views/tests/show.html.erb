@@ -1,8 +1,14 @@
-<div class="container m-4">
-  <ul>Test questions
-
-    <% @test.questions.each do |que| %>
-    <li><%= que.title %></li>
-    <% end %>
-  </ul>
-</div>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Test questions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @test.questions.each do |que| %>
+      <th class="list-group-item"><%= que.title %></th>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
