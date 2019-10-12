@@ -1,24 +1,39 @@
 class QuestionsController < ApplicationController
-  before_action :find_test
   before_action :find_question
+  before_action :find_test
 
   rescue_from ActiveRecord::RecordInvalid, with: :rescue_with_question_created
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    questions = @test.questions.pluck(:title)
-    render html: "<p>#{questions.join("<br>")}</p>".html_safe
   end
 
   def create
-    question = @test.questions.create!(question_params)
-    render html: "Question #{question.title} has been created"
+    @question = @test.questions.new(question_params)
+    if @question.save
+      redirect_to @test
+    else
+      render :new
+    end
   end
 
-  def new; end
+  def new
+    @question = @test.questions.new
+  end
+
+  def edit
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
+  end
 
   def show
-    render html: @question.title
+    @question
   end
 
   def destroy
@@ -27,8 +42,16 @@ class QuestionsController < ApplicationController
 
   private
 
+  def find_question
+    @question = Question.find(params[:id]) if params[:id]
+  end
+
   def find_test
-    @test = Test.find(params[:test_id]) if params[:test_id]
+    if params[:test_id]
+      @test = Test.find(params[:test_id])
+    else
+      @test = Test.find(@question.test_id)
+    end
   end
 
   def rescue_with_question_not_found(err)
@@ -37,10 +60,6 @@ class QuestionsController < ApplicationController
 
   def rescue_with_question_created(err)
     render plain: err.message
-  end
-
-  def find_question
-    @question = Question.find(params[:id]) if params[:id]
   end
 
   def question_params

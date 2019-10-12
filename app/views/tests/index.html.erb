@@ -1,0 +1,14 @@
+<div class="container m-3 tests">
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Quantity questions</th>
+    </tr>
+    <% @tests.each do |test| %>
+    <tr>
+      <td><%= test.title %></td>
+      <td><%= question_quantity test %>
+    </tr>
+    <% end %>
+  </table>
+</div>

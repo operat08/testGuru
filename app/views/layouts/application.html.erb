@@ -11,5 +11,14 @@
 
   <body>
     <%= yield %>
+
+    <div class="container m-3" id="footer">
+      <span><%= year %></span>
+      <span>Vasiliy</span>
+      <span><a href=<%= link_to_github 'morphizm', 'test-guru' %> target="_blank">TestGuru</a></span>
+      <p>ТестГуру - это сайт для создания и прохождения тестов.</p>
+      <p>Здесь вы можете создавать тесты в качестве администратора и проходить их в качестве клиента.</p>
+      <span><a href="http://thinknetica.com/" target="_blank">Учебный проект в онлайн-школе Thinketica</a></span>
+    </div>
   </body>
 </html>

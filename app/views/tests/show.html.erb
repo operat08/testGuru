@@ -1,0 +1,8 @@
+<div class="container m-4">
+  <ul>Test questions
+
+    <% @test.questions.each do |que| %>
+    <li><%= que.title %></li>
+    <% end %>
+  </ul>
+</div>
