@@ -1,7 +1,6 @@
 module QuestionsHelper
-  METHODS = { create: 'Create', edit: 'Edit' }.freeze
-
-  def question_header(method, test)
-    "#{METHODS[method]} #{test.title} Question"
+  def question_header(question)
+    method = question.persisted? ? 'Edit' : 'Create'
+    "#{method} #{question.test.title} Question"
   end
 end

@@ -5,10 +5,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <% @test.questions.each do |que| %>
-      <th class="list-group-item"><%= que.title %></th>
-      <% end %>
-    </tr>
+    <%= render @test %>    
   </tbody>
 </table>
+<%= button_to "Back to test", tests_path, class: "btn btn-light", method: 'get' %>

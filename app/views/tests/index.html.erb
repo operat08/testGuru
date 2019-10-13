@@ -3,16 +3,25 @@
     <thead>
       <tr>
         <th scope="col">Title</th>
+        <th scope="col">Level</th>
         <th scope="col">Quantity questions</th>
+        <th scope="col" colspan="3">Action</th>
       </tr>
     </thead>
     <tbody>
       <% @tests.each do |test| %>
       <tr>
         <td><%= test.title %></td>
-        <td><%= question_quantity test %>
+        <td><%= test.level %></td>
+        <td><%= question_quantity test %></td>
+        <td><%= link_to 'Show', test_path(test) %></td>
+        <td><%= link_to 'Edit', edit_test_path(test) %></td>
+        <td><%= link_to 'Delete', test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
+    <button type="button" class="btn btn-light">
+      <%= link_to "New Test", new_test_path %>
+    </button>
 </div>
