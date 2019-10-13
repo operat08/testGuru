@@ -1,0 +1,7 @@
+<%= form_with model: [parent, child], local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :question_title %>
+  </div>
+<%= form.submit class: 'btn btn-primary' %>
+<% end %>
