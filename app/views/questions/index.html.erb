@@ -1,6 +1,0 @@
-<ul class="list-group list-group-flush">
-  <% @test.questions.each do |question| %>
-  <li class="list-group-item"><%= question.title %></li>
-  <% end %>
-</ul>
-<%= button_to "Back to test", test_path(@test), class: "btn btn-light", method: 'get' %>

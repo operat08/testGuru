@@ -8,4 +8,11 @@
     <%= render @test %>    
   </tbody>
 </table>
-<%= button_to "Back to test", tests_path, class: "btn btn-light", method: 'get' %>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-light">
+    <%= link_to "Back to tests", tests_path %>
+  </button>
+  <button type="button" class="btn btn-light">
+    <%= link_to "New Question", new_test_question_path(@test) %>
+  </button>
+</div>
