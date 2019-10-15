@@ -5,7 +5,7 @@
         <th scope="col">Title</th>
         <th scope="col">Level</th>
         <th scope="col">Quantity questions</th>
-        <th scope="col" colspan="3">Actions</th>
+        <th scope="col" colspan="4">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +17,7 @@
         <td><%= link_to 'Show', test_path(test) %></td>
         <td><%= link_to 'Edit', edit_test_path(test) %></td>
         <td><%= link_to 'Delete', test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Start', start_test_path(test) %></td>
       </tr>
       <% end %>
     </tbody>

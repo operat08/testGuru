@@ -2,8 +2,8 @@ class Test < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "author_id", optional: true
   belongs_to :category, optional: true
   has_many :questions, dependent: :destroy
-  has_many :users_tests, dependent: :destroy
-  has_many :users, through: :users_tests
+  has_many :test_passages
+  has_many :users, through: :test_passages
 
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :title, presence: true

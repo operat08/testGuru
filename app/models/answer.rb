@@ -4,7 +4,7 @@ class Answer < ApplicationRecord
   belongs_to :question
 
   validates :title, presence: true
-  validate :question_answers
+  validate :question_answers, on: :create
 
   scope :correct, -> { where(correct: true) }
 

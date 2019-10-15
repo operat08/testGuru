@@ -31,7 +31,3 @@ answers = Answer.create!([{ title: 'not fine', question: questions[0] }, { title
   { title: 'OR', question: questions[4] }, { title: 'XOR', correct: true, question: questions[4] }
 ])
 
-users_tests = UsersTest.create!([{ test: tests[0], user: users[0], result: 't' },
-  { test: tests[2], user: users[0] }, { test: tests[1], user: users[1] },
-  { test: tests[1], user: users[1] }, { test: tests[2], user: users[2] }
-])
