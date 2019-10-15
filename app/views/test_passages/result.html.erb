@@ -2,12 +2,8 @@
 
 <div>
   <p> Correct questions: 
-  <% if pass_test?(@test_passage) %>
-    <span style="color:green"><%= @test_passage.correct_questions  %></span> Successful
-  <% else %>
-    <span style="color:red"><%= @test_passage.correct_questions  %></span> not Successful
-  <% end %>
-  </p>  
+    <%= write_success(@test_passage) %>
+  </p>
 </div>
 
 <button type="button" class="btn btn-light">

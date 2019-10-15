@@ -3,25 +3,29 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_first_question, on: :create
-  after_save :next_question
+  before_validation :set_current_question
 
   def completed?
     current_question.nil?
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
   end
 
-  private
-
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
+  def passed?
+    questions = test.questions.count
+    total = correct_questions / questions.to_f * 100
+    total >= 85
   end
+
+  def current_question_number
+    current_id = current_question.id
+    test.questions.where('id < ?', current_id).count + 1
+  end
+
+  private
 
   def correct_answer?(answer_ids)
     correct_answers_count = correct_answers.count
@@ -34,6 +38,14 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+    if current_question
+      test.questions.order(:id).where('id > ?', current_question.id).first
+    else
+      test.questions.first
+    end
+  end
+
+  def set_current_question
+    self.current_question = next_question
   end
 end

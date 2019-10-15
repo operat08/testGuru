@@ -19,7 +19,7 @@ tests = Test.create!([{ title: 'Vasiliy', category: categories[0], author: users
 ])
 
 questions = Question.create!([{ title: 'How do I do?', test: tests[0] },
-  { title: 'What is my name?', test: tests[0] }, { title: 'Is the weather fine?', test: tests[1] },
+  { title: 'What is my name?', test: tests[0] }, { title: 'Is the weather fine?', test: tests[0] },
   { title: 'Do I like rain?', test: tests[1] }, { title: '^ is ?', test: tests[2] }
 ])
 
