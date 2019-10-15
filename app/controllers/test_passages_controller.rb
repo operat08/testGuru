@@ -9,16 +9,14 @@ class TestPassagesController < ApplicationController
       render :show
     end
   end
-  def show
 
-  end
+  def show; end
 
-  def result
+  def result; end
 
-  end
   private
+
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
   end
-
 end

@@ -7,7 +7,7 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.test_passages.push(*@test, current_question_id: 1)
+    @user.tests.push(@test)
     redirect_to @user.test_passage(@test)
   end
 

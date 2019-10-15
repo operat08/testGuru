@@ -1,1 +1,15 @@
-<h1>the <%= @test_passage.test.title %> Test was </h1>
+<h1>The <%= @test_passage.test.title %> Test was completed</h1>
+
+<div>
+  <p> Correct questions: 
+  <% if pass_test?(@test_passage) %>
+    <span style="color:green"><%= @test_passage.correct_questions  %></span> Successful
+  <% else %>
+    <span style="color:red"><%= @test_passage.correct_questions  %></span> not Successful
+  <% end %>
+  </p>  
+</div>
+
+<button type="button" class="btn btn-light">
+  <%= link_to 'Tests', tests_path %>
+</button>

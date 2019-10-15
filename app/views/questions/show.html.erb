@@ -1,10 +1,11 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"><%= @question.title %></th>
-    </tr>
-  </thead>
-</table>
+<h2><%= @question.title %></h2>
+
+<h2>Answers</h2>
+
+<ol class="list-group">
+  <%= render @question.answers %>
+</ol>
+
 <div class="btn-group" role="group" aria-label="Basic example">
   <button type="button" class="btn btn-light">
     <%= link_to "Back to questions", test_path(@test) %>
@@ -12,9 +13,7 @@
   <button type="button" class="btn btn-light">
     <%= link_to 'Edit question', edit_question_path %>
   </button>
+  <button type="button" class="btn btn-light">
+    <%= link_to 'New answer', new_question_answer_path(@question) %>
+  </button>
 </div>
-<h2>Answers</h2>
-<%= link_to 'New answer', new_question_answer_path(@question) %>
-<ol>
-<%= render @question.answers %>
-</ol>

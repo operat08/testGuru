@@ -1,13 +1,17 @@
-<h1>Pass <%= @test_passage.test.title %></h1>
+<h1>Pass the<%= @test_passage.test.title %> Test</h1>
 
-<b>
+<div>
   <%= @test_passage.current_question.title %>
-</b>
+</div>
+<div>
+  Current question - <%= current_question @test_passage %>; 
+  Total amount questions - <%= @test_passage.test.questions.count %>
+</div>
 <%= form_with url: test_passage_path(@test_passage), local: true,  method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :title, include_hidden: false do |b| %>
-  <div>
-    <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-    <%= b.label %></div>
+  <div class="form-check">
+    <%= b.check_box id: "answer_ids_#{b.object.id}", class: "from-check-input" %>
+    <%= b.label class: "from-check-label" %></div>
   <% end %>
-  <%= form.submit 'Next' %>
+  <%= form.submit 'Next', class: "btn btn-primary " %>
 <% end %>
