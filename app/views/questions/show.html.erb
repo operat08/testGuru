@@ -7,13 +7,11 @@
 </ol>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-light">
-    <%= link_to "Back to questions", test_path(@test) %>
-  </button>
-  <button type="button" class="btn btn-light">
-    <%= link_to 'Edit question', edit_question_path %>
-  </button>
-  <button type="button" class="btn btn-light">
-    <%= link_to 'New answer', new_question_answer_path(@question) %>
-  </button>
+
+    <%= link_to "Back to questions", test_path(@test),class: "btn btn-light" %>
+
+    <%= link_to 'Edit question', edit_question_path,class: "btn btn-light" %>
+
+    <%= link_to 'New answer', new_question_answer_path(@question),class: "btn btn-light" %>
+
 </div>

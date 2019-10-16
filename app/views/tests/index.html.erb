@@ -14,15 +14,14 @@
         <td><%= test.title %></td>
         <td><%= test.level %></td>
         <td><%= question_quantity test %></td>
-        <td><%= link_to 'Show', test_path(test) %></td>
-        <td><%= link_to 'Edit', edit_test_path(test) %></td>
-        <td><%= link_to 'Delete', test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', test_path(test), class: "btn btn-light" %></td>
+        <td><%= link_to 'Edit', edit_test_path(test), class: "btn btn-light" %></td>
+        <td><%= link_to 'Delete', test_path(test), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-light" %></td>
         <td><%= button_to 'Start', start_test_path(test), class: "btn btn-light" %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<button type="button" class="btn btn-light">
-  <%= link_to "New Test", new_test_path %>
-</button>
+
+<%= link_to "New Test", new_test_path, class: "btn btn-light" %>

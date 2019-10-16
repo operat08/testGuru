@@ -1,10 +1,7 @@
 <h1>Enter the guru gates</h1>
 <%= render 'form' %>
 
-<button type="button" class="btn btn-light">
-  <%= link_to 'Back', root_path %>
-</button>
 
-<button type="button" class="btn btn-light">
-  <%= link_to 'Sign up', signup_path %>
-</button>
+<%= link_to 'Back', root_path, class: "btn btn-light" %>
+<%= link_to 'Sign up', signup_path, class: "btn btn-light" %>
+

@@ -11,6 +11,5 @@
   <p>Success rate is <%= @test_passage.total.round(3) %>%</p>
 </div>
 
-<button type="button" class="btn btn-light">
-  <%= link_to 'Tests', tests_path %>
-</button>
+
+  <%= link_to 'Tests', tests_path, class: "btn btn-light" %>
