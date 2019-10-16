@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    redirect_to login_path unless current_user
-    session[:referer] = request.url
+    unless current_user
+      redirect_to login_path
+      session[:referer] = request.url
+    end
     cookies[:email] = current_user&.email
   end
 

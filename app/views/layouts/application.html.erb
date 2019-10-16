@@ -15,7 +15,7 @@
         <%= link_to 'TestGuru', root_path %> |
         <%= link_to 'Sign Up', signup_path %> |
         <%= link_to 'Sign In', login_path %> |
-        <%= link_to 'Sign Out', signout_path, method: :put %>
+        <%= link_to 'Sign Out', signout_path, method: :delete, onclick: "alert('Goodbye!')" %>
       </div>
       <% if logged_in? %>
         <p class="nav user"> Welcome,&nbsp;<b><%= current_user.name %></b>&nbsp;<%= link_to 'Guru', root_path %></p>
