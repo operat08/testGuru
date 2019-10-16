@@ -14,15 +14,17 @@ class TestPassage < ApplicationRecord
     save!
   end
 
-  def passed?
+  def total
     questions = test.questions.count
-    total = correct_questions / questions.to_f * 100
+    correct_questions / questions.to_f * 100
+  end
+
+  def passed?
     total >= 85
   end
 
   def current_question_number
-    current_id = current_question.id
-    test.questions.where('id < ?', current_id).count + 1
+    test.questions.where('id <= ?', current_question.id).count
   end
 
   private
@@ -38,10 +40,10 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    if current_question
-      test.questions.order(:id).where('id > ?', current_question.id).first
-    else
+    if new_record?
       test.questions.first
+    else
+      test.questions.order(:id).where('id > ?', current_question.id).first
     end
   end
 

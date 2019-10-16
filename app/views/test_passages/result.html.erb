@@ -2,8 +2,13 @@
 
 <div>
   <p> Correct questions: 
-    <%= write_success(@test_passage) %>
+      <%  if @test_passage.passed? %>
+      <span class="success"><%= @test_passage.correct_questions %></span><b> Successful</b>
+    <% else %>
+      <span class="fail"><%= @test_passage.correct_questions %></span><b> not Successful</b>
+    <% end %>
   </p>
+  <p>Success rate is <%= @test_passage.total.round(3) %>%</p>
 </div>
 
 <button type="button" class="btn btn-light">
