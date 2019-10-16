@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: "Test", foreign_key: "author_id", dependent: :nullify
 
   validates :name, presence: true
-  validates :email, format: { with: /\w+@\w+\.\w/ }, uniqueness: true
+  validates :email, format: { with: /\w+@\w+\.\w+/ }, uniqueness: true
 
   has_secure_password
 
