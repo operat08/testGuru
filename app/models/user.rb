@@ -3,7 +3,10 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :created_tests, class_name: "Test", foreign_key: "author_id", dependent: :nullify
 
-  validates :email, :name, presence: true
+  validates :name, presence: true
+  validates :email, format: { with: /\w+@\w+\.\w/ }, uniqueness: true
+
+  has_secure_password
 
   def test_list_on_level(level)
     tests.where(level: level)
