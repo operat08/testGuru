@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       redirect_to login_path
     end
-
+    session[:referer] = request.url
     cookies[:email] = current_user&.email
   end
 

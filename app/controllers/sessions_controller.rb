@@ -4,10 +4,9 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-    puts '!!!!!!!!!'
     if user&.authenticate(params[:email])
       session[:user_id] = user.id
-      redirect_to tests_path
+      redirect_to session[:referer]
     else
       flash.now[:alert] = 'Can not find match e-mail password  '
       render :new
