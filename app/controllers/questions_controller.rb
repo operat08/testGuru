@@ -3,7 +3,6 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: [:destroy, :edit, :show, :update]
   before_action :find_test, only: [:new, :create]
 
-
   rescue_from ActiveRecord::RecordInvalid, with: :rescue_with_question_created
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 

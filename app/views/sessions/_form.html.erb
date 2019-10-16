@@ -1,12 +1,12 @@
 <%= form_with url: sessions_path, local: true do |form| %>
   <%= flash_alert(flash[:alert]) %>
-  <div>
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :email %>
+    <%= form.text_field :email, id: :email, class: "form-control", type: "email", placeholder: "Enter email" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= form.label :password %>
-    <%= form.password_field :password, id: :password %>
+    <%= form.password_field :password, id: :password, class: "form-control", placeholder: "Password" %>
   </div>
-  <%= form.submit 'Enter' %>
+  <%= form.submit 'Enter', class: "btn btn-primary" %>
 <% end %>

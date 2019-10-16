@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to session[:referer]
     else
-      flash.now[:alert] = 'Can not find match e-mail password  '
+      flash.now[:alert] = 'Can not find match e-mail - password'
       render :new
     end
   end
