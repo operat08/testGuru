@@ -6,12 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:email])
       session[:user_id] = user.id
-      if session[:referer]
-        redirect_to session[:referer]
-        session.delete(:referer)
-      else
-        redirect_to tests_path
-      end
+      redirect_to session.delete(:referer) || tests_path
     else
       flash.now[:alert] = 'Can not find match e-mail - password'
       render :new

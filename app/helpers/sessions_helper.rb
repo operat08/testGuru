@@ -1,7 +1,7 @@
 module SessionsHelper
-  def flash_alert(type)
-    if alert
-      content_tag :p, type, class: 'flash alert'
+  def flash_message(type)
+    if flash[type]
+      content_tag :p, flash[type], class: "flash #{type}"
     end
   end
 end
