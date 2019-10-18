@@ -11,12 +11,12 @@
 
   <body>
     <div class="container">
-      <div class="container m-3 header">
-        <%= link_to 'TestGuru', root_path, class: "btn btn-light" %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-light" %>
-        <%= link_to 'Sign In', user_session_path, class: "btn btn-light" %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: "alert('Goodbye!')", class: "btn btn-light" %>
-      </div>
+      <nav class="nav nav-pills">
+        <%= link_to 'TestGuru', root_path, class: "nav-item nav-link active" %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+        <%= link_to 'Sign In', user_session_path, class: "nav-link" %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: "alert('Goodbye!')", class: "nav-link" %>
+      </nav>
       <% if user_signed_in? %>
         <p class="text-right">
           Welcome,&nbsp; <b><%= current_user.email %></b>&nbsp;<%= link_to 'Guru', root_path %>
