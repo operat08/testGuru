@@ -18,9 +18,8 @@
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: "alert('Goodbye!')", class: "btn btn-light" %>
       </div>
       <% if user_signed_in? %>
-        <p class="nav user">
-          Welcome, <b><%= current_user.email %></b> Guru |
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>  
+        <p class="text-right">
+          Welcome,&nbsp; <b><%= current_user.email %></b>&nbsp;<%= link_to 'Guru', root_path %>
         </p>
       <% end %>
 
