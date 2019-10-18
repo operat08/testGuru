@@ -13,14 +13,19 @@
     <div class="container">
       <div class="container m-3 header">
         <%= link_to 'TestGuru', root_path, class: "btn btn-light" %>
-        <%= link_to 'Sign Up', signup_path, class: "btn btn-light" %>
-        <%= link_to 'Sign In', login_path, class: "btn btn-light" %>
-        <%= link_to 'Sign Out', signout_path, method: :delete, onclick: "alert('Goodbye!')", class: "btn btn-light" %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-light" %>
+        <%= link_to 'Sign In', user_session_path, class: "btn btn-light" %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: "alert('Goodbye!')", class: "btn btn-light" %>
       </div>
-      <% if logged_in? %>
-        <p class="text-right"> Welcome,&nbsp;<b><%= current_user.name %></b>&nbsp;<%= link_to 'Guru', root_path %></p>
+      <% if user_signed_in? %>
+        <p class="nav user">
+          Welcome, <b><%= current_user.email %></b> Guru |
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>  
+        </p>
       <% end %>
-      
+
+      <%= render 'shared/flash' %>
+
       <%= yield %>
 
       <div class="card text-center">
