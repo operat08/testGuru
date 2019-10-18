@@ -1,4 +1,6 @@
 class TestPassage < ApplicationRecord
+  SUCCESS = 85
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
@@ -20,7 +22,7 @@ class TestPassage < ApplicationRecord
   end
 
   def passed?
-    total >= 85
+    total >= SUCCESS
   end
 
   def current_question_number
