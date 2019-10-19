@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
+class SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def after_sign_in_path_for(resource)
-    if resource.is_a?(Admin)
+  def after_sign_in_path_for(user)
+    if user.admin?
       admin_tests_path
     else
       tests_path
