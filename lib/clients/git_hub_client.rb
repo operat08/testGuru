@@ -1,8 +1,10 @@
 class GitHubClient
-  ACCESS_TOKEN = '3d5cb7edbfb45737e5fd70abd15094ce3800a8e6'
+  DOTENV = Dotenv.overload
+  LOGIN = DOTENV['LOGIN']
+  PASSWORD = DOTENV['PASSWORD']
 
   def initialize
-    @http_client = Octokit::Client.new(login: 'morphizm', password: 'OPERoper77')
+    @http_client = Octokit::Client.new(login: LOGIN, password: PASSWORD)
   end
 
   def create_gist(params)
