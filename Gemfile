@@ -28,6 +28,7 @@ gem 'rails-i18n'
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.0'
 gem 'faraday'
+gem 'octokit', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
