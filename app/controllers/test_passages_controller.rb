@@ -17,11 +17,14 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
+    question = @test_passage.current_question
+    result = GistQuestionService.new(question).call
     flash_options =
       if result
-        Gist.create!(question: @test_passage.current_question, user: current_user, url: result['html_url'])
-        { notice: t('.success', url: result['html_url']) }
+        html_url = result['html_url']
+        Gist.create!(question: question, user: current_user, url: html_url)
+
+        { notice: t('.success', url: html_url) }
       else
         { alert: t('.failure') }
       end
