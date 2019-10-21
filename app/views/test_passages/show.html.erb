@@ -13,5 +13,8 @@
     <%= b.check_box id: "answer_ids_#{b.object.id}", class: "from-check-input" %>
     <%= b.label class: "from-check-label" %></div>
   <% end %>
+
+  <%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %>
+
   <%= form.submit 'Next', class: "btn btn-primary " %>
 <% end %>

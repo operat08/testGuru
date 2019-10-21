@@ -32,3 +32,4 @@ answers = Answer.create!([{ title: 'not fine', question: questions[0] }, { title
   { title: 'OR', question: questions[4] }, { title: 'XOR', correct: true, question: questions[4] }
 ])
 
+gists = Gist.create!([{ question: questions[0], url: '	https://gist.github.com/morphizm', user: users[0] }])
