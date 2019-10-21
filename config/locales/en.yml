@@ -37,7 +37,7 @@ en:
 en:
   test_passages:
     gist:
-      success: "A gist has been saved, %{url}"
+      success: A gist has been saved,
       failure: "An error occurred while saving a gist"
   services:
     gist_question:

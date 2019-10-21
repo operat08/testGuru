@@ -3,9 +3,8 @@ ru:
   hello: '"Hello world <a href="%{url}" target="_blink">Gist</a>"'
   test_passages:
     gist:
-      success: Gist успешно сохранен, %{url}
+      success: Gist успешно сохранен,
       failure: "Во время сохранения gist произошла ошибка"
-      success_html: Gist успешно сохранен, <a href="%{url}" target="_blink">Gist</a>
   services:
     gist_question:
       description: "Вопрос о %{title} из TestGuru"
