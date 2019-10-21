@@ -1,7 +1,7 @@
 <% flash.each do |key, message| %>
   <% if message.is_a?(Array) %>
-    <% mes, link = message %>
-    <p class=<%= "flash #{key}" %>><%= mes %> <a href=<%=link%> target="_blank">Gist</a></p>
+    <% mes, link, link_name = message %>
+    <p class=<%= "flash #{key}" %>><%= mes %> <%= link_to link_name, link, target: "_blank" %></p>
   <% else %>
     <%= content_tag :p, message, class: "flash #{key}" %>
   <% end %>
